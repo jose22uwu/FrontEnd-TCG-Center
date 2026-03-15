@@ -1,0 +1,280 @@
+/* Sell page: reuses .profile-page, .profile-album, .card, .card-modal-* from ProfileView.css */
+
+.sell-page .profile-title {
+  letter-spacing: -0.02em;
+}
+
+.sell-page .profile-greeting {
+  color: var(--ui-text-muted);
+  line-height: 1.5;
+}
+
+.sell-listings-link {
+  color: var(--ui-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sell-listings-link:hover {
+  text-decoration: underline;
+}
+
+/* Modal de venta más grande para mejor lectura (Teleport a body). Fondo por rareza. */
+.sell-modal-content {
+  max-width: 520px;
+  max-height: 92vh;
+  padding: 0;
+  background: var(--modal-bg, var(--ui-surface));
+  transition: transform 0.3s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: var(--modal-glow, 0 24px 48px rgba(0, 0, 0, 0.4)),
+    0 0 0 1px rgba(0, 0, 0, 0.15),
+    0 32px 64px -12px rgba(0, 0, 0, 0.5),
+    0 48px 96px -24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.sell-modal-body .card-modal-image {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.sell-modal-content .card-modal-body {
+  flex-direction: column;
+  padding: 1.75rem;
+  gap: 1.5rem;
+}
+
+/* Card image: más grande en modal */
+.sell-modal-body .card-modal-image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  aspect-ratio: 294 / 410;
+  margin: 0 auto;
+  flex-shrink: 0;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.sell-modal-info {
+  width: 100%;
+}
+
+.sell-modal-info .card-modal-name {
+  font-size: 1.5rem;
+}
+
+/* Textos en modal de vender: colores por rareza */
+.card-modal-content .sell-modal-info .card-modal-name {
+  color: var(--modal-info-text, #fef3c7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.card-modal-content .sell-modal-owned,
+.card-modal-content .sell-modal-current-price {
+  color: var(--modal-info-text-muted, rgba(254, 243, 199, 0.9));
+}
+
+.card-modal-content .sell-modal-current-price strong {
+  color: var(--modal-info-text, #fde68a);
+}
+
+.card-modal-content .sell-price-chart-title,
+.card-modal-content .sell-price-chart-loading,
+.card-modal-content .sell-price-chart-empty {
+  color: var(--modal-info-text-muted, rgba(254, 243, 199, 0.9));
+}
+
+.card-modal-content .sell-modal-form label,
+.card-modal-content .sell-form-field label {
+  color: var(--modal-info-text-muted, rgba(254, 243, 199, 0.95));
+}
+
+.sell-modal-owned {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--ui-text-muted);
+}
+
+.sell-modal-current-price {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  color: var(--ui-text-secondary);
+}
+
+.sell-modal-current-price strong {
+  color: var(--ui-accent);
+  font-weight: 600;
+}
+
+/* Price history chart - línea */
+.sell-price-chart-wrap {
+  position: relative;
+  margin-bottom: 1.25rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--ui-border);
+  border-bottom: 1px solid var(--ui-border);
+  overflow: visible;
+}
+
+.sell-price-chart-title {
+  margin: 0 0 0.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ui-text-secondary);
+}
+
+.sell-price-chart-loading,
+.sell-price-chart-empty {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--ui-text-muted);
+}
+
+.sell-price-chart--line {
+  display: block;
+  margin-top: 0.5rem;
+  overflow: visible;
+}
+
+.sell-price-chart-svg {
+  width: 100%;
+  height: 96px;
+  display: block;
+  cursor: default;
+  overflow: visible;
+}
+
+.sell-price-chart-area {
+  stroke: none;
+}
+
+.sell-price-chart-line {
+  stroke: var(--ui-accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  vector-effect: non-scaling-stroke;
+}
+
+.sell-price-chart-point {
+  cursor: pointer;
+}
+
+.sell-price-chart-hit {
+  fill: transparent;
+}
+
+.sell-price-chart-point {
+  cursor: pointer;
+}
+
+.sell-price-chart-dot {
+  fill: var(--ui-surface);
+  stroke: var(--ui-accent);
+  stroke-width: 2;
+}
+
+.sell-price-chart-dot--hover {
+  filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.4));
+}
+
+.sell-price-chart-tooltip {
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  color: var(--ui-bg);
+  background: var(--ui-accent);
+  border-radius: 8px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.sell-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.sell-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.sell-form-field label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ui-text-secondary);
+}
+
+.sell-form-field input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+  color: var(--ui-text);
+  background: var(--ui-surface-elevated);
+  border: 1px solid var(--ui-border);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.sell-form-field input:focus {
+  outline: none;
+  border-color: var(--ui-accent);
+  box-shadow: 0 0 0 2px var(--ui-accent-muted);
+}
+
+.sell-form-field input::-webkit-outer-spin-button,
+.sell-form-field input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sell-form-field input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.sell-form-error {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #fca5a5;
+  background: var(--ui-danger-soft);
+  border-radius: 8px;
+  border: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.sell-form-success {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: #86efac;
+}
+
+.sell-form-submit {
+  margin-top: 0.25rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: var(--ui-font-heading);
+  color: var(--ui-bg);
+  background: linear-gradient(145deg, var(--ui-accent) 0%, #d97706 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+}
+
+.sell-form-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+}
+
+.sell-form-submit:disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+}

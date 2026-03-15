@@ -1,0 +1,50 @@
+:root {
+  --color-text: #1a1a1a;
+  --color-text-muted: #666;
+  --color-bg: #fff;
+  --color-border: #e5e5e5;
+  --color-error: #c00;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-link: var(--color-primary);
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.125rem;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --radius: 8px;
+  --radius-sm: 4px;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+
+  /* App theme: dark UI, one accent, consistent typography */
+  --ui-bg: #0f1419;
+  --ui-surface: #1a1d24;
+  --ui-surface-elevated: #252a32;
+  --ui-text: #f3f4f6;
+  --ui-text-secondary: #d1d5db;
+  --ui-text-muted: #9ca3af;
+  --ui-border: rgba(255, 255, 255, 0.08);
+  --ui-accent: #f59e0b;
+  --ui-accent-hover: #fbbf24;
+  --ui-accent-muted: rgba(245, 158, 11, 0.18);
+  --ui-danger-soft: rgba(248, 113, 113, 0.15);
+  --ui-font: "Fredoka", sans-serif;
+  --ui-font-heading: "Fredoka", sans-serif;
+  --font-sans: "Fredoka", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #f3f4f6;
+    --color-text-muted: #9ca3af;
+    --color-bg: #111827;
+    --color-border: #374151;
+    --color-error: #f87171;
+    --color-primary: #3b82f6;
+    --color-primary-hover: #60a5fa;
+  }
+}

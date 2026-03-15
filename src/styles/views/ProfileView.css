@@ -1,0 +1,507 @@
+/* Profile page */
+.profile-page {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: var(--ui-font);
+  color: var(--ui-text);
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: var(--spacing-xs);
+  flex-shrink: 0;
+}
+
+.profile-title {
+  font-family: var(--ui-font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--ui-text);
+}
+
+.profile-filter-wrap {
+  position: relative;
+}
+
+.profile-filter-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.08);
+  color: var(--ui-text-secondary);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.profile-filter-btn:hover {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: var(--ui-text);
+}
+
+.profile-filter-btn--open {
+  background: rgba(245, 158, 11, 0.18);
+  border-color: rgba(245, 158, 11, 0.45);
+  color: var(--ui-accent);
+}
+
+.profile-filter-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.profile-filter-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 10rem;
+  padding: 0.25rem;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+  z-index: 50;
+}
+
+.profile-filter-option {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ui-text);
+  font-size: 0.9375rem;
+  font-family: var(--ui-font);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.profile-filter-option:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.profile-filter-option--active {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--ui-accent);
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-4px);
+}
+
+.profile-no-results {
+  margin: 0;
+  padding: 2rem;
+  text-align: center;
+  color: var(--ui-text-muted);
+  font-size: 1rem;
+}
+
+.profile-greeting {
+  margin: 0 0 var(--spacing-md);
+  color: var(--ui-text-muted);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.profile-message,
+.profile-error {
+  margin: 0;
+  padding: var(--spacing-lg);
+  text-align: center;
+  color: var(--ui-text-muted);
+}
+
+.profile-error {
+  color: #fca5a5;
+}
+
+/* ---------- Album: CodePen Niklas-H GRzqXrX (Pokémon Cards) ---------- */
+.profile-album {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.profile-album .cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: 0.5rem 0;
+  width: 100%;
+  max-width: 1280px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Card: 294×410 ≈ 2.5:3.5 ratio; responsive with aspect-ratio. Subtle amber border like navbar. */
+.profile-album .card {
+  position: relative;
+  background-image: var(--background);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: clamp(140px, 22vw, 294px);
+  aspect-ratio: 294 / 410;
+  min-width: 140px;
+  max-width: 294px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  transition-origin: bottom 50%;
+  border-radius: 10px;
+  border: 1px solid rgba(245, 158, 11, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transform: rotateX(-0.2deg) skewX(0.2deg);
+}
+
+.profile-album .card:not([style*="--background: url"]) {
+  background-color: var(--ui-surface-elevated);
+}
+
+.profile-album .card .shine {
+  position: absolute;
+  right: -50px;
+  bottom: -50px;
+  width: 1000px;
+  height: 150px;
+  opacity: 0.4;
+  transform: translateX(50%) rotateZ(-45deg);
+  transform-origin: 50% 50%;
+  transition: all 0.5s ease-in-out;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(255, 255, 255, 0.5),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.profile-album .card:hover,
+.profile-album .card.card--auto-hover {
+  transform: rotateX(-15deg) skewX(5deg);
+}
+
+.profile-album .card:hover .shine,
+.profile-album .card.card--auto-hover .shine {
+  right: 200px;
+  bottom: 200px;
+}
+
+.profile-album .card-clickable {
+  cursor: pointer;
+}
+
+/* Holo Rare V / VMAX: efecto holográfico (referencia CodePen simeydotme/PrQKgo) */
+.profile-album .card-holo,
+.sell-page .card-holo {
+  isolation: isolate;
+  --holo-color1: rgba(0, 231, 255, 0.6);
+  --holo-color2: rgba(255, 0, 231, 0.6);
+  box-shadow: -5px -5px 5px -5px var(--holo-color1), 5px 5px 5px -5px var(--holo-color2),
+    0 55px 35px -20px rgba(0, 0, 0, 0.5);
+}
+
+.profile-album .card-holo:hover,
+.sell-page .card-holo:hover,
+.profile-album .card-holo.card--holo-active,
+.sell-page .card-holo.card--holo-active {
+  box-shadow: -20px -20px 30px -25px var(--holo-color1), 20px 20px 30px -25px var(--holo-color2),
+    0 0 13px 4px rgba(255, 255, 255, 0.25), 0 55px 35px -20px rgba(0, 0, 0, 0.5);
+}
+
+.profile-album .card-holo:hover,
+.profile-album .card-holo.card--holo-active,
+.sell-page .card-holo:hover,
+.sell-page .card-holo.card--holo-active {
+  transform: rotateX(var(--holo-ty, 0deg)) rotateY(var(--holo-tx, 0deg));
+}
+
+.profile-album .card-holo .card-holo__before,
+.profile-album .card-holo .card-holo__after,
+.sell-page .card-holo .card-holo__before,
+.sell-page .card-holo .card-holo__after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  mix-blend-mode: color-dodge;
+  z-index: 1;
+}
+
+.profile-album .card-holo .card-holo__after,
+.sell-page .card-holo .card-holo__after {
+  z-index: 2;
+}
+
+.profile-album .card-holo .card-holo__before,
+.sell-page .card-holo .card-holo__before {
+  background-image: linear-gradient(
+    115deg,
+    transparent 0%,
+    var(--holo-color1) 25%,
+    transparent 47%,
+    transparent 53%,
+    var(--holo-color2) 75%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  background-position: var(--holo-bg-pos, 50% 50%);
+  opacity: var(--holo-bg-opacity, 0.5);
+  filter: brightness(0.5) contrast(1);
+}
+
+.profile-album .card-holo:hover .card-holo__before,
+.profile-album .card-holo.card--holo-active .card-holo__before,
+.sell-page .card-holo:hover .card-holo__before {
+  background-image: linear-gradient(
+    110deg,
+    transparent 25%,
+    var(--holo-color1) 48%,
+    var(--holo-color2) 52%,
+    transparent 75%
+  );
+  background-size: 250% 250%;
+  opacity: var(--holo-bg-opacity, 0.88);
+  filter: brightness(0.66) contrast(1.33);
+}
+
+.profile-album .card-holo .card-holo__after,
+.sell-page .card-holo .card-holo__after {
+  background-image: url("https://assets.codepen.io/13471/sparkles.gif"),
+    url("https://assets.codepen.io/13471/holo.png"),
+    linear-gradient(
+      125deg,
+      #ff008450 15%,
+      #fca40040 30%,
+      #ffff0030 40%,
+      #00ff8a20 60%,
+      #00cfff40 70%,
+      #cc4cfa50 85%
+    );
+  background-position: var(--holo-spark-pos, 50% 50%);
+  background-size: 160%;
+  background-blend-mode: overlay;
+  opacity: var(--holo-spark-opacity, 0.75);
+  filter: brightness(1) contrast(1);
+}
+
+.profile-album .card-holo:hover .card-holo__after,
+.profile-album .card-holo.card--holo-active .card-holo__after,
+.sell-page .card-holo:hover .card-holo__after {
+  opacity: var(--holo-spark-opacity, 1);
+}
+
+/* Evitar transform por defecto en hover cuando es holo y está activo */
+.profile-album .card-holo .shine,
+.sell-page .card-holo .shine {
+  z-index: 0;
+}
+
+/* ---------- Card modal (fade in/out) ---------- */
+.card-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow: auto;
+  background: var(--modal-bg, var(--ui-surface));
+  border-radius: 14px;
+  border: 3px solid var(--modal-border, rgba(255, 255, 255, 0.15));
+  box-shadow: var(--modal-glow, 0 24px 48px rgba(0, 0, 0, 0.4)),
+    0 0 0 1px rgba(0, 0, 0, 0.15),
+    0 32px 64px -12px rgba(0, 0, 0, 0.5),
+    0 48px 96px -24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: transform 0.3s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.card-modal-content:hover {
+  transform: scale(1.02);
+}
+
+.card-modal-content > .card-modal-body {
+  position: relative;
+  z-index: 1;
+}
+
+.card-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--ui-text);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.card-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.card-modal-close::before,
+.card-modal-close::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1rem;
+  height: 2px;
+  background: currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.card-modal-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.card-modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+.card-modal-image {
+  width: 100%;
+  aspect-ratio: 294 / 410;
+  max-width: 240px;
+  margin: 0 auto;
+  border-radius: 10px;
+  background: var(--ui-surface-elevated) center/cover no-repeat;
+}
+
+.card-modal-name {
+  margin: 0;
+  font-family: var(--ui-font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ui-text);
+}
+
+.card-modal-details {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.25rem 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.card-modal-details dt {
+  margin: 0;
+  color: var(--ui-text-muted);
+  font-weight: 500;
+}
+
+.card-modal-details dd {
+  margin: 0;
+  color: var(--ui-text);
+}
+
+/* Panel de descripción: colores por rareza (--modal-info-* desde rarityModalStyles) */
+.card-modal-content .card-modal-info {
+  background: var(--modal-info-bg, rgba(0, 0, 0, 0.82));
+  padding: 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--modal-info-border, rgba(251, 191, 36, 0.2));
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.card-modal-content .card-modal-name {
+  color: var(--modal-info-text, #fef3c7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.card-modal-content .card-modal-details dt {
+  color: var(--modal-info-text-muted, rgba(254, 243, 199, 0.85));
+}
+
+.card-modal-content .card-modal-details dd {
+  color: var(--modal-info-text, #fef3c7);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+/* Fade transition */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.modal-fade-enter-active .card-modal-content,
+.modal-fade-leave-active .card-modal-content {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+.modal-fade-enter-from .card-modal-content,
+.modal-fade-leave-to .card-modal-content {
+  opacity: 0;
+  transform: scale(0.96);
+}
+
+@media (max-width: 640px) {
+  .profile-page {
+    padding: var(--spacing-md);
+  }
+
+  .profile-album {
+    padding: 1rem;
+  }
+
+  .profile-album .cards {
+    gap: 1rem;
+  }
+
+  .profile-album .card {
+    width: clamp(120px, 42vw, 180px);
+    min-width: 120px;
+    max-width: 180px;
+  }
+}

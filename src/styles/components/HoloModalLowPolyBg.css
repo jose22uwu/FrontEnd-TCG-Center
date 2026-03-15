@@ -1,0 +1,29 @@
+/**
+ * Fondo holo para modales Holo Rare / Holo Rare V.
+ * Base oscura + sparkles con mix-blend-mode: color-dodge.
+ * Ref: https://codepen.io/GennySalvatore/pen/poRoapY
+ */
+.holo-modal-colordodge {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  overflow: hidden;
+  pointer-events: none;
+  min-height: 100%;
+  background-color: #0f0a1a;
+}
+
+.holo-modal-colordodge__sparkles {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/13471/sparkles.gif");
+  background-position: center;
+  background-size: 180%;
+  background-repeat: no-repeat;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+}

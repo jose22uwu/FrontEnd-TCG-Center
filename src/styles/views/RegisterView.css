@@ -1,0 +1,4 @@
+/* Register: more fields, slightly wider card */
+.register-page .auth-card {
+  max-width: 24rem;
+}

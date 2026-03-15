@@ -1,0 +1,4 @@
+/* Login-specific overrides */
+.login-page .auth-card {
+  max-width: 22rem;
+}
