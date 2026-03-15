@@ -8,6 +8,7 @@ import { cardImageSrc } from '@/utils/cardImage'
 import { normalizeApiList } from '@/utils/apiResponse'
 import { useClickOutside } from '@/composables/useClickOutside'
 import HoloModalLowPolyBg from '@/components/HoloModalLowPolyBg.vue'
+import CardThumb from '@/components/CardThumb.vue'
 import '@/styles/views/BuyView.css'
 
 const auth = useAuthStore()
@@ -192,8 +193,9 @@ onMounted(loadListings)
               v-for="card in (listing.cards || [])"
               :key="card.id"
               class="buy-card-thumb"
-              :style="{ backgroundImage: cardImageSrc(card.image_url) ? `url(${cardImageSrc(card.image_url)})` : 'none' }"
-            />
+            >
+              <CardThumb :src="cardImageSrc(card.image_url)" :alt="card.name" />
+            </div>
           </div>
           <div class="buy-card-info">
             <template v-if="listing.cards?.length">

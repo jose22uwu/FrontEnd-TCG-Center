@@ -112,10 +112,11 @@
   width: 84px;
   height: 117px;
   border-radius: 10px;
-  background: var(--ui-surface-elevated) center/cover no-repeat;
+  background: var(--ui-surface-elevated);
   border: 1px solid rgba(245, 158, 11, 0.06);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.2s ease;
+  overflow: hidden;
 }
 
 .my-listings-card:hover .my-listings-thumb {

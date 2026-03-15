@@ -49,6 +49,21 @@ Edita `.env`:
 VITE_API_URL=http://127.0.0.1:8000/api
 ```
 
+## Despliegue con Docker
+
+Desde la **raíz del proyecto** (carpeta que contiene `FrontPKMNTCG` y el backend):
+
+```bash
+docker compose up -d --build
+```
+
+O usa el script: `./scripts/deploy-docker.sh` (bash) o `.\scripts\deploy-docker.ps1` (PowerShell).
+
+- **Frontend:** http://localhost:8080 (imagen construida desde `FrontPKMNTCG/Dockerfile`, sirve el build con nginx).
+- **Backend API:** http://localhost:8000 (el front se construye con `VITE_API_URL=http://localhost:8000/api` por defecto).
+
+Para otro dominio de la API (p. ej. producción), define `VITE_API_URL` en un `.env` en la raíz antes de construir: `VITE_API_URL=https://api.ejemplo.com/api docker compose build frontend`.
+
 ## Scripts
 
 | Comando | Descripcion |

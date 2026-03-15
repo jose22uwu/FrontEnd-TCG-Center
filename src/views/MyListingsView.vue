@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { api } from '@/services/api'
 import { cardImageSrc } from '@/utils/cardImage'
 import { normalizeApiList } from '@/utils/apiResponse'
+import CardThumb from '@/components/CardThumb.vue'
 import '@/styles/views/MyListingsView.css'
 
 const LISTING_FILTERS = [
@@ -113,8 +114,9 @@ onMounted(loadListings)
               v-for="card in (listing.cards || [])"
               :key="card.id"
               class="my-listings-thumb"
-              :style="{ backgroundImage: cardImageSrc(card.image_url) ? `url(${cardImageSrc(card.image_url)})` : 'none' }"
-            />
+            >
+              <CardThumb :src="cardImageSrc(card.image_url)" :alt="card.name" />
+            </div>
           </div>
           <div class="my-listings-card-info">
             <p class="my-listings-price">{{ Number(listing.starting_price).toFixed(2) }} €</p>

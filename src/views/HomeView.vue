@@ -48,10 +48,13 @@ function center (i) {
 
 function toggleUI (i) {
   const track = trackRef.value
-  if (track) {
-    const cardEls = Array.from(track.children)
-    cardEls.forEach((c, k) => c.toggleAttribute('active', k === i))
-  }
+  if (!track) return
+  const activeCard = carouselCards.value[i]
+  const activeId = activeCard ? String(activeCard.id) : null
+  const cardEls = Array.from(track.children)
+  cardEls.forEach((el) => {
+    el.toggleAttribute('active', el.dataset.cardId === activeId)
+  })
 }
 
 function activate (i, scroll) {
@@ -100,7 +103,7 @@ async function loadCarouselCards () {
   loading.value = true
   error.value = ''
   try {
-    const { data } = await api.get('/cards', { params: { per_page: 24 } })
+    const { data } = await api.get('/carousel')
     cards.value = normalizeApiList(data, [])
   } catch (e) {
     error.value = e.response?.data?.message || 'No se pudieron cargar las cartas.'
@@ -178,6 +181,7 @@ onBeforeUnmount(() => {
               <div
                 v-for="(card, idx) in carouselCards"
                 :key="card.id"
+                :data-card-id="card.id"
                 class="project-card"
                 @click="activate(idx, true)"
                 @mouseenter="onCardEnter(idx)"
