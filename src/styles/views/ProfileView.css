@@ -125,6 +125,12 @@
   flex-shrink: 0;
 }
 
+.profile-count {
+  margin: 0 0 var(--spacing-md);
+  color: var(--ui-text-secondary);
+  font-size: 0.9375rem;
+}
+
 .profile-message,
 .profile-error {
   margin: 0;

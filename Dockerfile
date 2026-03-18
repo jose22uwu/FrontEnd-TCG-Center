@@ -4,12 +4,12 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 COPY package.json package-lock.json* ./
-RUN npm ci
+RUN npm ci 2>/dev/null || npm install
 
 COPY . .
 
-# Backend API URL as seen by the browser (build-time). Default: /api (relative, use same-origin proxy).
-ARG VITE_API_URL=/api
+# Backend API URL as seen by the browser (build-time). docker-compose pasa VITE_API_URL.
+ARG VITE_API_URL=http://localhost:8000/api
 ENV VITE_API_URL=$VITE_API_URL
 
 RUN npm run build

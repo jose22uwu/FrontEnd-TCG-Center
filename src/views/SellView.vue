@@ -244,7 +244,7 @@ async function loadMyActiveListings () {
 onMounted(async () => {
   try {
     const [cardsRes, listingsRes] = await Promise.all([
-      api.get('/user/cards', { params: { per_page: 100 } }),
+      api.get('/user/cards', { params: { per_page: 'all' } }),
       api.get('/user/listings', { params: { per_page: 100 } })
     ])
     userCards.value = normalizeApiList(cardsRes.data)

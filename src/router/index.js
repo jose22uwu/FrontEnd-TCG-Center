@@ -51,6 +51,12 @@ const router = createRouter({
           name: 'listings',
           component: () => import('@/views/MyListingsView.vue'),
           meta: { title: 'Anuncios de venta', auth: true }
+        },
+        {
+          path: 'chat',
+          name: 'chat',
+          component: () => import('@/views/ChatView.vue'),
+          meta: { title: 'Asistente', auth: true }
         }
       ]
     }

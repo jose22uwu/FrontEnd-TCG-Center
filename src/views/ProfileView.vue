@@ -18,6 +18,14 @@ const error = ref('')
 
 const displayName = computed(() => auth.user?.name || auth.user?.username || 'Usuario')
 
+const totalCardsLabel = computed(() => {
+  const list = cardsWithPivot.value
+  if (!list.length) return ''
+  const totalCopies = list.reduce((sum, c) => sum + (c.quantity || 0), 0)
+  if (totalCopies === list.length) return `${list.length} carta${list.length !== 1 ? 's' : ''}`
+  return `${list.length} carta${list.length !== 1 ? 's' : ''} (${totalCopies} copias)`
+})
+
 const cardsWithPivot = computed(() => {
   const list = userCards.value
   if (!Array.isArray(list)) return []
@@ -155,7 +163,7 @@ async function loadUserCards () {
   loading.value = true
   error.value = ''
   try {
-    const { data } = await api.get('/user/cards', { params: { per_page: 100 } })
+    const { data } = await api.get('/user/cards', { params: { per_page: 'all' } })
     userCards.value = normalizeApiList(data)
   } catch (e) {
     error.value = e.response?.data?.message || 'No se pudieron cargar las cartas.'
@@ -212,6 +220,7 @@ onBeforeUnmount(clearAutoHoverSchedule)
       </div>
     </div>
     <p class="profile-greeting">Bienvenido, {{ displayName }}.</p>
+    <p v-if="totalCardsLabel" class="profile-count">{{ totalCardsLabel }} en tu álbum</p>
 
     <template v-if="loading">
       <p class="profile-message">Cargando álbum...</p>

@@ -61,7 +61,7 @@ function handleLogout () {
 <template>
   <div class="main-layout">
     <nav class="navbar navbar-expand-custom navbar-mainbg">
-      <RouterLink to="/" class="navbar-brand navbar-logo">Pokemon TCG Subasta</RouterLink>
+      <RouterLink to="/" class="navbar-brand navbar-logo">TCG Center</RouterLink>
       <button
         type="button"
         class="navbar-toggler"
@@ -97,6 +97,9 @@ function handleLogout () {
             </li>
             <li class="nav-item" :class="{ active: isActive('listings') }">
               <RouterLink to="/listings" class="nav-link">Anuncios de venta</RouterLink>
+            </li>
+            <li class="nav-item" :class="{ active: isActive('chat') }">
+              <RouterLink to="/chat" class="nav-link">Asistente</RouterLink>
             </li>
             <li class="nav-item">
               <button type="button" class="nav-link nav-link-btn" @click="handleLogout">
